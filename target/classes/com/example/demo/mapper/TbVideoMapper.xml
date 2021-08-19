@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.mapper.TbVideoMapper" >
+  <resultMap id="BaseResultMap" type="com.example.demo.domain.TbVideo" >
+    <id column="VIDEO_ID" property="videoId" jdbcType="INTEGER" />
+    <result column="VIDEO_TITLE" property="videoTitle" jdbcType="VARCHAR" />
+    <result column="VIDEO_UPLOAD_TIME" property="videoUploadTime" jdbcType="TIMESTAMP" />
+    <result column="VIDEO_IMG_URL" property="videoImgUrl" jdbcType="VARCHAR" />
+    <result column="VIDEO_MOVIE_URL" property="videoMovieUrl" jdbcType="VARCHAR" />
+    <result column="VIDEO_SIZE" property="videoSize" jdbcType="INTEGER" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_video
+    where VIDEO_ID = #{videoId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.domain.TbVideo" >
+    insert into tb_video (VIDEO_ID, VIDEO_TITLE, VIDEO_UPLOAD_TIME, 
+      VIDEO_IMG_URL, VIDEO_MOVIE_URL, VIDEO_SIZE
+      )
+    values (#{videoId,jdbcType=INTEGER}, #{videoTitle,jdbcType=VARCHAR}, #{videoUploadTime,jdbcType=TIMESTAMP}, 
+      #{videoImgUrl,jdbcType=VARCHAR}, #{videoMovieUrl,jdbcType=VARCHAR}, #{videoSize,jdbcType=INTEGER}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.domain.TbVideo" >
+    update tb_video
+    set VIDEO_TITLE = #{videoTitle,jdbcType=VARCHAR},
+      VIDEO_UPLOAD_TIME = #{videoUploadTime,jdbcType=TIMESTAMP},
+      VIDEO_IMG_URL = #{videoImgUrl,jdbcType=VARCHAR},
+      VIDEO_MOVIE_URL = #{videoMovieUrl,jdbcType=VARCHAR},
+      VIDEO_SIZE = #{videoSize,jdbcType=INTEGER}
+    where VIDEO_ID = #{videoId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select VIDEO_ID, VIDEO_TITLE, VIDEO_UPLOAD_TIME, VIDEO_IMG_URL, VIDEO_MOVIE_URL, 
+    VIDEO_SIZE
+    from tb_video
+    where VIDEO_ID = #{videoId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select VIDEO_ID, VIDEO_TITLE, VIDEO_UPLOAD_TIME, VIDEO_IMG_URL, VIDEO_MOVIE_URL, 
+    VIDEO_SIZE
+    from tb_video
+  </select>
+</mapper>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>下载文件</title>
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+</head>
+<body>
+    <span>tanlong.txt</span>
+    <input onclick="mydownload('tanlong.txt')" type="button" value="下载">
+</body>
+</html>
+
+<script>
+    function mydownload(val) {
+        window.location.href = "http://" + window.location.host + "/file/download?fileName=" + val, '_blank'
+    }
+</script>

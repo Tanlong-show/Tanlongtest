@@ -1,0 +1,64 @@
+mybatis:
+  mapper-locations: classpath:mapping/*Mapper.xml
+  #type-aliases-package: com.example.entity
+
+#showSql
+logging:
+  level:
+    com:
+      example:
+        demo:
+          mapper: debug
+
+server:
+  port: 8080
+
+
+
+spring:
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1ms
+        max-idle: 500
+        min-idle: 0
+    lettuce:
+      shutdown-timeout: 0ms
+
+      server:
+        max-http-header-size=102400:
+
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/movie?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  freemarker:
+    charset: utf-8 #编码方式
+    check-template-location: true #检查模板位置是否存在
+    content-type: text/html
+    enabled: true #是否启用freemarker
+    expose-request-attributes: false
+    expose-session-attributes: false
+    expose-spring-macro-helpers: true
+    prefer-file-system-access: true
+    suffix: .ftl
+    template-loader-path: classpath:/templates
+    settings:
+      classic_compatible: true
+
+  servlet:
+    multipart:
+      max-file-size: 500MB
+      max-request-size: 1000MB
+    mvc:
+      static-path-pattern: /static/**  #项目中访问静态资源的前缀名
+    resources:
+      static-locations: classpath:/D:/img
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,classpath:/upload/
+
+
