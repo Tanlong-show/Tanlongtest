@@ -14,6 +14,7 @@ public class UserServiceImp implements UserService {
 
 
     public List<TbUser> findAll() {
+        System.out.println("qqqq");
         return tbUserMapper.selectAll();
     }
 
